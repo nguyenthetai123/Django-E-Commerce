@@ -1,0 +1,63 @@
+{% load static %}
+{% load mptt_tags %}
+
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<!-- container -->
+		<div class="container">
+			
+			<div id="responsive-nav">
+				
+				<!-- category nav -->
+				{% if page %}
+				<div class="category-nav">
+				{% else%}
+				 <div class='category-nav show-on-click'>
+				{%endif%}
+					<span class="category-header">Categories <i class="fa fa-list"></i></span>
+					<ul class="category-list">
+						{% recursetree category %}
+						<li class="dropdown side-dropdown">
+							<a href="{% url 'category_products' node.id node.slug %}" class="dropdown-toggle" {% if not node.is_leaf_node %} data-toggle="dropdown" aria-expanded="true" {% endif %}>{{ node.title }} <i class="fa fa-angle-right"></i></a>
+							<div class="custom-menu">
+								<div class="row">
+									<div class="col-md-4">
+										{{ node.title }}
+										{% if not node.is_leaf_node %}
+										<ul class="list-links">
+											<li>
+												
+											<li><a href="#"> {{ children }}</a></li>
+										</ul>
+										{% endif %}
+										<hr class="hidden-md hidden-lg">
+									</div>
+									
+								</div>
+								
+							</div>
+						</li>
+						{% endrecursetree %}
+						<li><a href="#">View All</a></li>
+					</ul>
+				</div>
+				<!-- /category nav -->
+
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+					<ul class="menu-list">
+						<li><a href="{%url 'index'%}">Home</a></li>
+
+						<li><a href="#">Shop</a></li>
+						<li><a href="{%url 'contact'%}">Contact</a></li>
+						<li><a href="{%url 'about'%}">about</a></li>
+						
+					</ul>
+				</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /NAVIGATION -->

@@ -1,0 +1,18 @@
+{% extends 'homebase.html' %}
+
+{% block title %} Frequently Asked Questions{% endblock %}
+{% block description %} {{ setting.description }} {% endblock %}
+{% block keywords %} {{ setting.keywords }} {% endblock %}
+
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+
+{% block head %}
+    <script>
+        $( function() {
+            $( "#accordion" ).accordion();
+        } );
+    </script>
+
+{% endblock %}
+{% block body %}
+{%endblock%}
